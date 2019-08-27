@@ -104,20 +104,17 @@ public class CanvasDraw extends View {
     }
 
 
-    public void setPincel(float newSize) {
-
-        float pincel = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, getResources().getDisplayMetrics());
-
-        pincelSize = pincel;
-        drawPaint.setStrokeWidth(pincelSize);
-
-    }
-
-
     public void setClear(boolean state) {
 
-        if (state) drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-        else drawPaint.setXfermode(null);
+        if (state) {
+            drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+            drawPaint.setStrokeWidth(40);
+        }
+        else {
+            drawPaint.setXfermode(null);
+            drawPaint.setStrokeWidth(pincelSize);
+            drawPaint.setColor(paintColor);
+        }
 
     }
 
